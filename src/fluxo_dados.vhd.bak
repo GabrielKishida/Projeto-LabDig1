@@ -141,17 +141,6 @@ architecture estrutural of fluxo_dados is
 			db_nivel			: out std_logic_vector(1 downto 0)
 		);
 	end component nivel_select;
-	
-	component random_sort is
-    port(
-        clock     : in  std_logic;
-        c_enable  : in  std_logic;
-		  r_enable  : in  std_logic;
-        c_clear   : in  std_logic;
-        r_clear   : in  std_logic;
-        dado      : out std_logic_vector(3 downto 0)
-    );
-	 end component random_sort;
 
 	signal s_cont_timeout  	: std_logic_vector(14 downto 0);
 	signal s_limite_timeout : std_logic_vector(14 downto 0);
@@ -309,16 +298,6 @@ architecture estrutural of fluxo_dados is
 		limite	=> s_nivel_limite,
 		limite_timeout => s_limite_timeout,
 		db_nivel	=> db_nivel
-	 );
-	 
-	 gerador_aleatorio : random_sort
-	 port map(
-		clock		=> clock,
-		c_enable	=> '0',
-		r_enable	=> '0',
-		c_clear	=> '0',
-		r_clear	=> '0',
-		dado		=> open
 	 );
 	 
 
