@@ -94,7 +94,7 @@ architecture circuito_projeto_arch of circuito_projeto is
 			pronto:    		out std_logic;
 			registra:			out std_logic;
 			repetindo:		out std_logic;
-			db_estado: 		out std_logic_vector(6 downto 0)
+			db_estado: 		out std_logic_vector(3 downto 0)
 		);
 		
 	end component unidade_controle;
@@ -204,7 +204,7 @@ begin
 			pronto			=> fim,
 			registra			=> sig_registra,
 			repetindo		=> sig_repetindo,
-			db_estado		=> db_estado
+			db_estado		=> s_db_estado
 		
 		);
 		
@@ -242,6 +242,11 @@ begin
 			sseg => db_nivel
 		);
 		
+	HEX5: hexa7seg
+		port map(
+			hexa => s_db_estado,
+			sseg => db_estado
+		);
 		
 	db_chavesIgualMemoria <= sig_jog_igual;
 	leds <= s_db_jogada;
