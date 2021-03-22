@@ -160,6 +160,7 @@ architecture estrutural of fluxo_dados is
 	signal s_jogada	  	  	: std_logic_vector(3 downto 0);
 	signal s_limite  	  	  	: std_logic_vector(3 downto 0);
 	signal s_nivel_limite	: std_logic_vector(3 downto 0);
+	signal s_random			: std_logic_vector(3 downto 0);
 	signal s_or_botoes	  	: std_logic;
 	signal s_tem_jogada	  	: std_logic;
 	signal s_not_zeraE	  	: std_logic;
@@ -222,7 +223,7 @@ architecture estrutural of fluxo_dados is
     port map(
 			clk			 => clock,
          endereco     => s_endereco,
-         dado_entrada => s_jogada,
+         dado_entrada => s_random,
          we           => s_not_escreve,
          ce           => '0',
          dado_saida   => s_dado
@@ -314,11 +315,11 @@ architecture estrutural of fluxo_dados is
 	 gerador_aleatorio : random_sort
 	 port map(
 		clock		=> clock,
-		c_enable	=> '0',
-		r_enable	=> '0',
+		c_enable	=> '1',
+		r_enable	=> registraR,
 		c_clear	=> '0',
 		r_clear	=> '0',
-		dado		=> open
+		dado		=> s_random
 	 );
 	 
 

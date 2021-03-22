@@ -159,6 +159,7 @@ begin
   with Eatual select
     escreve  <= '1' when N,
                 '0' when others;
+ 
   
   -- saida de depuracao (db_estado)
   with Eatual select
