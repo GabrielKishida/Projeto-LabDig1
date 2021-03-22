@@ -66,7 +66,7 @@ architecture tb of tb_cenario_erro is
 	signal db_jogada, db_contagem, db_memoria, db_limite, db_estado, db_nivel 	: std_logic_vector(6 downto 0);
 
 begin
-	DUT: circuito_semana1 port map 
+	DUT: circuito_projeto port map 
 	(
 		clock			=>	clock,
 		reset			=>	reset,
@@ -108,9 +108,10 @@ begin
 				iniciar <= '1';
 				wait for tb_period*5;
 				iniciar <= '0';
-				wait for tb_period*5;
+				wait for tb_period*100;
 				
 				--Teste ate o 3 e errar
+
 				for i in 0 to 3 loop
 					for j in 0 to i loop
 						botoes <= memoria(j);
