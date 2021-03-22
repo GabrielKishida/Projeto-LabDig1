@@ -29,7 +29,8 @@ architecture tb of tb_cenario_erro is
 		  db_memoria 	: out std_logic_vector(6 downto 0);
 		  db_limite 	: out std_logic_vector(6 downto 0); 
 		  db_estado 	: out std_logic_vector(6 downto 0);
-		  db_nivel	 	: out std_logic_vector(6 downto 0) 
+		  db_nivel	 	: out std_logic_vector(6 downto 0);
+		  db_random		: out std_logic_vector(3 downto 0) 
 	);
 	end component;
 	type arranjo_memoria is array(0 to 15) of std_logic_vector(3 downto 0);
@@ -61,7 +62,7 @@ architecture tb of tb_cenario_erro is
 
 	signal clock, reset, iniciar, repete, fim, espera, acertou, errou 	: std_logic;
 	signal nivel														: std_logic_vector(1 downto 0);
-	signal botoes, leds 								 				: std_logic_vector(3 downto 0);
+	signal botoes, leds, db_random 								 				: std_logic_vector(3 downto 0);
 	signal db_tem_jogada, db_chavesIgualMemoria 							    : std_logic;
 	signal db_jogada, db_contagem, db_memoria, db_limite, db_estado, db_nivel 	: std_logic_vector(6 downto 0);
 
@@ -86,7 +87,8 @@ begin
 		db_memoria		=> 	db_memoria, 
 		db_limite		=> 	db_limite, 
 		db_estado		=> 	db_estado,
-		db_nivel		=>	db_nivel
+		db_nivel		=>	db_nivel,
+		db_random		=>	db_random
 	);
 	
 	clock <= not clock after tb_period/2 when tb_simulation = '1' else '0';
@@ -102,26 +104,34 @@ begin
 				reset <= '1';
 				wait for tb_period*5;
 				reset <= '0';
-				wait for tb_period*5;
+				wait for tb_period*6;
 				
 				--Inicio
 				iniciar <= '1';
 				wait for tb_period*5;
 				iniciar <= '0';
-				wait for tb_period*100;
+				wait for tb_period*101;
 				
 				--Teste ate o 3 e errar
 
 				for i in 0 to 3 loop
+					for j in 0 to i loop
+						memoria(j) <= leds;
+						wait for tb_period*1000;
+					end loop;
 					for j in 0 to i loop
 						botoes <= memoria(j);
 						wait for tb_buttonOnWait * tb_period;
 						botoes <= tb_zero;
 						wait for tb_buttonOffWait * tb_period;
 					end loop;
+					wait for tb_period*3;
 				end loop;
-	
-				botoes <= "1000";
+						
+				wait for tb_period*8000;
+
+				botoes <= "0001";
+
 				wait for tb_buttonOnWait * tb_period;
 				botoes <= tb_zero;
 				wait for 100 * tb_period;

@@ -1,0 +1,154 @@
+C:/Users/gabri/Labdig/Projeto-LabDig1/src/registrador_4bits.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/registrador_4bits.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity registrador_4bits
+-- Compiling architecture arch of registrador_4bits
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/circuito_projeto.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/circuito_projeto.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity circuito_projeto
+-- Compiling architecture circuito_projeto_arch of circuito_projeto
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/tb_cenario_timeout.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/tb_cenario_timeout.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_BIT
+-- Compiling entity tb_cenario_timeout
+-- Compiling architecture tb of tb_cenario_timeout
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/hexa7seg.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/hexa7seg.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity hexa7seg
+-- Compiling architecture comportamental of hexa7seg
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/tb_cenario_erro.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/tb_cenario_erro.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_BIT
+-- Compiling entity tb_cenario_erro
+-- Compiling architecture tb of tb_cenario_erro
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/contador_2bits.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/contador_2bits.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity contador_2bits
+-- Compiling architecture comportamental of contador_2bits
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/nivel_select.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/nivel_select.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity nivel_select
+-- Compiling architecture arch of nivel_select
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/edge_detector.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/edge_detector.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity edge_detector
+-- Compiling architecture rtl of edge_detector
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/ram_16x4.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/ram_16x4.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity ram_16x4
+-- Compiling architecture ram_mif of ram_16x4
+-- Compiling architecture ram_modelsim of ram_16x4
+-- Loading entity ram_16x4
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/contador_163.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/contador_163.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity contador_163
+-- Compiling architecture comportamental of contador_163
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/comparador_85.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/comparador_85.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity comparador_85
+-- Compiling architecture dataflow of comparador_85
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/contador_1s.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/contador_1s.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity contador_1s
+-- Compiling architecture comportamental of contador_1s
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/comparador_timeout.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/comparador_timeout.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity comparador_timeout
+-- Compiling architecture dataflow of comparador_timeout
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/unidade_controle.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/unidade_controle.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity unidade_controle
+-- Compiling architecture fsm of unidade_controle
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/fluxo_dados.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/fluxo_dados.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity fluxo_dados
+-- Compiling architecture estrutural of fluxo_dados
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/contador_timeout.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/contador_timeout.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity contador_timeout
+-- Compiling architecture comportamental of contador_timeout
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/random_sort.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/random_sort.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity random_sort
+-- Compiling architecture arch of random_sort
+
+} {} {}} C:/Users/gabri/Labdig/Projeto-LabDig1/src/registrador_2bits.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/gabri/Labdig/Projeto-LabDig1/src/registrador_2bits.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity registrador_2bits
+-- Compiling architecture arch of registrador_2bits
+
+} {} {}}

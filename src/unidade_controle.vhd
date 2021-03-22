@@ -90,16 +90,16 @@ begin
 		K when  Eatual=K and jogar='0' else
 		B when  Eatual=J and jogar='1' else
 		J when  Eatual=J and jogar='0' and repete='0' else
-		L when  Eatual=L and jogada='0' and timeout='0' else
-		M when  Eatual=L and jogada='1' else
+		--L when  Eatual=L and jogada='0' and timeout='0' else
+		M when  Eatual=L else
 		N when  Eatual=M else
 		J when  Eatual=D and timeout='1' else
 		J when  Eatual=L and timeout='1' else
 		Q when  Eatual=N else
 		R when  Eatual=Q else
-		S when  Eatual=R and conta_um='1' and end_menor='1' else
-		R when  Eatual=R and conta_um='0' and end_menor='1' else
-		I when  Eatual=R and end_menor='0' else
+		S when  Eatual=R and conta_um='1' and end_maior='0' else
+		R when  Eatual=R and conta_um='0' and end_maior='0' else
+		I when  Eatual=R and end_maior='1' else
 		R when  Eatual=S else
 		O when  Eatual=J and repete='1' else
 		P when  Eatual=O and conta_um='1' and end_igual='0' else

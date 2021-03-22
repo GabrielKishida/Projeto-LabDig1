@@ -3,10 +3,6 @@ use ieee.std_logic_1164.all;
 entity random_sort is
     port(
         clock     : in  std_logic;
-        c_enable  : in  std_logic;
-		  r_enable  : in  std_logic;
-        c_clear   : in  std_logic;
-        r_clear   : in  std_logic;
         dado      : out std_logic_vector(3 downto 0)
     );
 end entity;
@@ -27,21 +23,10 @@ component contador_2bits is
     );
 end component;
 
-component registrador_4bits is
-    port (
-        clock   : in  std_logic;
-        clear   : in  std_logic;
-        enable  : in  std_logic;
-        D       : in  std_logic_vector(3 downto 0);
-        Q       : out std_logic_vector(3 downto 0)
-      );
-end component;
-
-    signal sig_select	: std_logic_vector(1 downto 0);
-	 signal sig_inreg		: std_logic_vector(3 downto 0);
+    signal sig_select       : std_logic_vector(1 downto 0);
 	 
     begin
-	 sig_inreg <=
+	 dado <=
 		"0001" when sig_select = "00" else
 		"0010" when sig_select = "01" else
 		"0100" when sig_select = "10" else
@@ -50,22 +35,13 @@ end component;
         contador : contador_2bits
         port map(
             clock => clock,
-            clr   => c_clear,
-            ld    => c_enable,
-            ent   => c_enable,
+            clr   => '1',
+            ld    => '1',
+            ent   => '1',
             enp   => '1',
             D     => "00",
             Q     => sig_select,
             rco   => open
-        );
-
-        reg_dado : registrador_4bits
-        port map(
-            clock  => clock,
-            clear  => r_clear,
-            enable => r_enable,
-            D      => sig_inreg,
-            Q      => dado
         );
 
 end architecture;

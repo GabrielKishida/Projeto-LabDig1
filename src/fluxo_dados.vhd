@@ -31,7 +31,8 @@ entity fluxo_dados is
         	db_contagem 					: out std_logic_vector(3 downto 0);
         	db_memoria  					: out std_logic_vector(3 downto 0);
 			db_limite						: out std_logic_vector(3 downto 0);
-			db_nivel							: out std_logic_vector(1 downto 0)
+			db_nivel							: out std_logic_vector(1 downto 0);
+			db_random						: out std_logic_vector(3 downto 0)
     );
 
 end fluxo_dados;
@@ -145,10 +146,6 @@ architecture estrutural of fluxo_dados is
 	component random_sort is
     port(
         clock     : in  std_logic;
-        c_enable  : in  std_logic;
-		  r_enable  : in  std_logic;
-        c_clear   : in  std_logic;
-        r_clear   : in  std_logic;
         dado      : out std_logic_vector(3 downto 0)
     );
 	 end component random_sort;
@@ -185,7 +182,7 @@ architecture estrutural of fluxo_dados is
 	 RegBotoes : registrador_4bits
 	 port map(
 	 		clock  => clock,
-			clear  => limpaR,
+			clear  => contaL,
 			enable => registraR,
 			D      => botoes,
 			Q      => s_jogada
@@ -315,14 +312,11 @@ architecture estrutural of fluxo_dados is
 	 gerador_aleatorio : random_sort
 	 port map(
 		clock		=> clock,
-		c_enable	=> '1',
-		r_enable	=> registraR,
-		c_clear	=> '0',
-		r_clear	=> '0',
 		dado		=> s_random
 	 );
-	 
 
+	 db_random <= s_random;
+	 
 	 tem_jogada  <= s_tem_jogada;
 	 db_limite   <= s_limite;
 	 db_jogada   <= s_jogada when repetindo = '0' and zera_repete='0' else

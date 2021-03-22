@@ -24,7 +24,8 @@ entity circuito_projeto is
 		db_jogada 	   			: out std_logic_vector(6 downto 0);
 		db_limite 					: out std_logic_vector(6 downto 0); 
 		db_estado 					: out std_logic_vector(6 downto 0);
-		db_nivel						: out std_logic_vector(6 downto 0)
+		db_nivel						: out std_logic_vector(6 downto 0);
+		db_random					: out std_logic_vector(3 downto 0)
 	);
 	
 end entity;
@@ -61,7 +62,8 @@ architecture circuito_projeto_arch of circuito_projeto is
         	db_contagem 				: out std_logic_vector(3 downto 0);
         	db_memoria  				: out std_logic_vector(3 downto 0);
 			db_limite					: out std_logic_vector(3 downto 0);
-			db_nivel						: out std_logic_vector(1 downto 0)
+			db_nivel						: out std_logic_vector(1 downto 0);
+			db_random					: out std_logic_vector(3 downto 0)
 		);
 		
 	end component fluxo_dados;
@@ -173,7 +175,8 @@ begin
 			db_memoria  					=> s_db_memoria,
 			db_jogada						=> s_db_jogada,
 			db_limite						=> s_db_limite,
-			db_nivel							=> s_db_nivel_aux
+			db_nivel							=> s_db_nivel_aux,
+			db_random						=> db_random
 			);
 	
 	UC: unidade_controle
