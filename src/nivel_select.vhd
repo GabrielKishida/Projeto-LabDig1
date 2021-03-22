@@ -25,7 +25,7 @@ architecture arch of nivel_select is
 		);
 	end component;
 	
-	signal s_nivel					: std_logic_vector(1 downto 0);
+	signal s_nivel		: std_logic_vector(1 downto 0);
 
 
 begin

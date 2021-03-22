@@ -31,8 +31,7 @@ entity fluxo_dados is
         	db_contagem 					: out std_logic_vector(3 downto 0);
         	db_memoria  					: out std_logic_vector(3 downto 0);
 			db_limite						: out std_logic_vector(3 downto 0);
-			db_nivel							: out std_logic_vector(1 downto 0);
-			db_random						: out std_logic_vector(3 downto 0)
+			db_nivel							: out std_logic_vector(1 downto 0)
     );
 
 end fluxo_dados;
@@ -142,13 +141,6 @@ architecture estrutural of fluxo_dados is
 			db_nivel			: out std_logic_vector(1 downto 0)
 		);
 	end component nivel_select;
-	
-	component random_sort is
-    port(
-        clock     : in  std_logic;
-        dado      : out std_logic_vector(3 downto 0)
-    );
-	 end component random_sort;
 
 	signal s_cont_timeout  	: std_logic_vector(14 downto 0);
 	signal s_limite_timeout : std_logic_vector(14 downto 0);
@@ -157,7 +149,6 @@ architecture estrutural of fluxo_dados is
 	signal s_jogada	  	  	: std_logic_vector(3 downto 0);
 	signal s_limite  	  	  	: std_logic_vector(3 downto 0);
 	signal s_nivel_limite	: std_logic_vector(3 downto 0);
-	signal s_random			: std_logic_vector(3 downto 0);
 	signal s_or_botoes	  	: std_logic;
 	signal s_tem_jogada	  	: std_logic;
 	signal s_not_zeraE	  	: std_logic;
@@ -182,7 +173,7 @@ architecture estrutural of fluxo_dados is
 	 RegBotoes : registrador_4bits
 	 port map(
 	 		clock  => clock,
-			clear  => contaL,
+			clear  => limpaR,
 			enable => registraR,
 			D      => botoes,
 			Q      => s_jogada
@@ -220,7 +211,7 @@ architecture estrutural of fluxo_dados is
     port map(
 			clk			 => clock,
          endereco     => s_endereco,
-         dado_entrada => s_random,
+         dado_entrada => s_jogada,
          we           => s_not_escreve,
          ce           => '0',
          dado_saida   => s_dado
@@ -309,14 +300,7 @@ architecture estrutural of fluxo_dados is
 		db_nivel	=> db_nivel
 	 );
 	 
-	 gerador_aleatorio : random_sort
-	 port map(
-		clock		=> clock,
-		dado		=> s_random
-	 );
 
-	 db_random <= s_random;
-	 
 	 tem_jogada  <= s_tem_jogada;
 	 db_limite   <= s_limite;
 	 db_jogada   <= s_jogada when repetindo = '0' and zera_repete='0' else

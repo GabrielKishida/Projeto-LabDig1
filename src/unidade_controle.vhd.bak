@@ -39,12 +39,12 @@ entity unidade_controle is
     pronto:    		out std_logic;
 	 registra:			out std_logic;
 	 repetindo:			out std_logic;
-    db_estado: 		out std_logic_vector(6 downto 0)
+    db_estado: 		out std_logic_vector(3 downto 0)
   );
 end entity;
 
 architecture fsm of unidade_controle is
-  type t_estado is (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S);
+  type t_estado is (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P);
   signal Eatual, Eprox: t_estado;
   signal end_flag: std_logic;
 begin
@@ -54,7 +54,7 @@ begin
 	 --if Eatual=L then
 	 -- espera_jogada <= '1';
 	 --end if;
-	 if (Eatual= S or Eprox = S) and fim_uc='1' then
+	 if Eatual= L and fim_uc='1' then
       end_flag <= '1';
 	 elsif Eatual = B or Eatual= A then
 		end_flag <= '0';
@@ -73,6 +73,7 @@ begin
 		A when  Eatual=A and jogar='0' else
 		B when  Eatual=A and jogar='1' else
 		C when  Eatual=B else
+		--D when  Eatual=C else
 		D when  Eatual=D and jogada='0' and timeout='0' else
 		E when  Eatual=D and jogada='1' else
 		F when  Eatual=E else
@@ -81,7 +82,7 @@ begin
 		G when  Eatual=F and jog_igual='1' and fim_uc='0' else
 		H when  Eatual=G else
 		H when  Eatual=C else
-		L when  Eatual=H and (end_igual='1' or fim_uc='1') and end_flag ='0' else -- REVER O END_FLAG NA UNIAO
+		L when  Eatual=H and (end_igual='1' or fim_uc='1') and end_flag ='0' else
 		I when  Eatual=H and end_maior='1' else
 		D when  Eatual=H and ((end_menor='1' and fim_uc='0') or end_flag='1') else
 		C when  Eatual=I else
@@ -89,17 +90,12 @@ begin
 		K when  Eatual=K and jogar='0' else
 		B when  Eatual=J and jogar='1' else
 		J when  Eatual=J and jogar='0' and repete='0' else
-		--L when  Eatual=L and jogada='0' and timeout='0' else
-		M when  Eatual=L else
+		L when  Eatual=L and jogada='0' and timeout='0' else
+		M when  Eatual=L and jogada='1' else
 		N when  Eatual=M else
 		J when  Eatual=D and timeout='1' else
 		J when  Eatual=L and timeout='1' else
-		Q when  Eatual=N else
-		R when  Eatual=Q else
-		S when  Eatual=R and conta_um='1' and end_maior='0' and end_flag ='0' else
-		R when  Eatual=R and conta_um='0' and end_maior='0' else
-		I when  Eatual=R and (end_maior='1' or end_flag ='1')  else
-		R when  Eatual=S else
+		I when  Eatual=N else
 		O when  Eatual=J and repete='1' else
 		P when  Eatual=O and conta_um='1' and end_igual='0' else
 		O when  Eatual=O and conta_um='0' and end_igual='0' else
@@ -109,79 +105,88 @@ begin
 
   -- logica de saída (maquina de Moore)
   with Eatual select
-    zera_end <= '1' when B | C | J | Q,
+    zera_end <= '0' when A | D | E | F | G | H | I | K | L | M | N | O | P ,
+                '1' when B | C | J,
                 '0' when others;
 
   with Eatual select
-    zera_lim <= '1' when B ,
+    zera_lim <= '0' when A | C | D | E | F | G | H | I | J | K | L | M | N | O | P,
+                '1' when B ,
                 '0' when others;
 
   with Eatual select
-    conta_end <= '1' when G | P | S,
+    conta_end <= '0' when A | B | C | D | E | F | H | I | J | K | L | M | N | O,
+                 '1' when G | P,
                  '0' when others;
 					  
   with Eatual select
-    conta_repete <= '1' when O | R,
+    conta_repete <= '0' when A | B | C | D | E | F | G | H | I | J | K | L | M | N | P,
+                    '1' when O,
                     '0' when others;
   with Eatual select
-    zera_repete <=  '1' when J | P | Q | S,
+    zera_repete <=  '0' when A | B | C | D | E | F | G | H | I | K | L | M | N | O,
+                    '1' when J | P,
                     '0' when others;
 						  
   with Eatual select
-    repetindo <=    '1' when O | P | R | S,
+    repetindo <=    '0' when A | B | C | D | E | F | G | H | I | J | K | L | M | N ,
+                    '1' when O | P,
                     '0' when others;
 
   with Eatual select
-    conta_lim <= '1' when I,
+    conta_lim <= '0' when A | B | C | D | E | F | G | H | J | K | L | M | N | O | P,
+                 '1' when I,
                  '0' when others;
 					  
   with Eatual select
-    conta_to <= '1' when D | L ,
+    conta_to <= '0'  when A | B | C | E | F | G | H | I | J | K | M | N | O | P,
+                '1' when D | L ,
                 '0' when others;
 
   with Eatual select
-    pronto   <= '1' when J | K | O | P,
+    pronto   <= '0' when A | B | C | D | E | F | G | H | I | L | M | N,
+                '1' when J | K | O | P,
                 '0' when others;
 
   with Eatual select
-    errou 	 <= '1' when J | O | P,
+    errou 	 <= '0' when A | B | C | D | E | F | G | H | I | K | L | M | N ,
+                '1' when J | O | P,
                 '0' when others;
 
   with Eatual select
-    acertou  <= '1' when K,
+    acertou  <= '0' when A | B | C | D | E | F | H | I | J | L | M | N | O | P,
+                '1' when K,
                 '0' when others;
 	
   with Eatual select
-    registra <= '1' when M | E,
+    registra <= '0' when A | B | C | D | F | G | H | I | J | K | L | N | O | P,
+                '1' when M | E,
                 '0' when others;
   
   with Eatual select
-    escreve  <= '1' when N,
+    escreve  <= '0' when A | B | C | D | E | F | G | H | I | J | K | L | M | O | P,
+                '1' when N,
                 '0' when others;
- 
   
   -- saida de depuracao (db_estado)
   with Eatual select
-    db_estado <= "0000000" when A,      -- 00 
-                 "0000001" when B,      -- 01
-                 "0000010" when C,      -- 02
-                 "0000011" when D,      -- 03  
-                 "0000100" when E,      -- 04 
-                 "0000101" when F,      -- 05 
-					  "0000110" when G,		 -- 06 
-                 "0000111" when H,      -- 07 
-                 "0001000" when I,      -- 08 
-                 "0001001" when J,      -- 09 
-                 "0001010" when K,      -- 0A
-                 "0001011" when L,      -- 0B
-                 "0001100" when M,      -- 0C
-                 "0001101" when N,      -- 0D
-					  "0001110" when O,		 -- 0E
-                 "0001111" when P,      -- 0F
-					  "0010000" when Q,		 -- 10
-					  "0010001" when R,		 -- 11
-					  "0010010" when S,		 -- 12
-                 "1000000" when others; -- 40
+    db_estado <= "0000" when A,      -- 0 40
+                 "0001" when B,      -- 1 79
+                 "0010" when C,      -- 2 24
+                 "0011" when D,      -- 3 30 
+                 "0100" when E,      -- 4 19
+                 "0101" when F,      -- 5 12
+					  "0110" when G,		 -- 6 02
+                 "0111" when H,      -- 7 78
+                 "1000" when I,      -- 8 00
+                 "1001" when J,      -- 9 
+                 "1010" when K,      -- A
+                 "1011" when L,      -- B
+                 "1100" when M,      -- C
+                 "1101" when N,      -- D
+					  "1110" when O,		 -- E
+                 "1111" when P,      -- F
+                 "0000" when others;
 					  
 	with Eatual select			  
 	espera_jogada <= '1' when L,
