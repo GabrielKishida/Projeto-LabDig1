@@ -54,7 +54,7 @@ begin
 	 --if Eatual=L then
 	 -- espera_jogada <= '1';
 	 --end if;
-	 if Eatual= L and fim_uc='1' then
+	 if (Eatual= S or Eprox = S) and fim_uc='1' then
       end_flag <= '1';
 	 elsif Eatual = B or Eatual= A then
 		end_flag <= '0';
@@ -73,7 +73,6 @@ begin
 		A when  Eatual=A and jogar='0' else
 		B when  Eatual=A and jogar='1' else
 		C when  Eatual=B else
-		--D when  Eatual=C else
 		D when  Eatual=D and jogada='0' and timeout='0' else
 		E when  Eatual=D and jogada='1' else
 		F when  Eatual=E else
@@ -82,7 +81,7 @@ begin
 		G when  Eatual=F and jog_igual='1' and fim_uc='0' else
 		H when  Eatual=G else
 		H when  Eatual=C else
-		L when  Eatual=H and (end_igual='1' or fim_uc='1') and end_flag ='0' else
+		L when  Eatual=H and (end_igual='1' or fim_uc='1') and end_flag ='0' else -- REVER O END_FLAG NA UNIAO
 		I when  Eatual=H and end_maior='1' else
 		D when  Eatual=H and ((end_menor='1' and fim_uc='0') or end_flag='1') else
 		C when  Eatual=I else
@@ -97,9 +96,9 @@ begin
 		J when  Eatual=L and timeout='1' else
 		Q when  Eatual=N else
 		R when  Eatual=Q else
-		S when  Eatual=R and conta_um='1' and end_maior='0' else
+		S when  Eatual=R and conta_um='1' and end_maior='0' and end_flag ='0' else
 		R when  Eatual=R and conta_um='0' and end_maior='0' else
-		I when  Eatual=R and end_maior='1' else
+		I when  Eatual=R and (end_maior='1' or end_flag ='1')  else
 		R when  Eatual=S else
 		O when  Eatual=J and repete='1' else
 		P when  Eatual=O and conta_um='1' and end_igual='0' else

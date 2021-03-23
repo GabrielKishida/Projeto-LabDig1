@@ -26,6 +26,7 @@ end component;
     signal sig_select       : std_logic_vector(1 downto 0);
 	 
     begin
+	 
 	 dado <=
 		"0001" when sig_select = "00" else
 		"0010" when sig_select = "01" else

@@ -80,7 +80,7 @@ architecture circuito_projeto_arch of circuito_projeto is
 			end_maior: 		in  std_logic;
 			jogada: 			in  std_logic;
 			timeout:			in  std_logic;
-			repete:				in  std_logic;
+			repete:			in  std_logic;
 			conta_um:     	in  std_logic;
 			espera_jogada:	out std_logic;
 			escreve:   		out std_logic;
